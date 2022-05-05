@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com</groupId>
+    <artifactId>api_auto_Andjenkins</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>war</packaging>
+
+    <dependencies>
+        <!-- HttpClient是一个实现了HTTP协议的客户端接口调用技术，可以通过它来mock模拟工具发起接口请求，完成接口调用 -->
+        <!-- 集成httpclient依赖包，来模拟客户端发送请求，完成接口调用 -->
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+            <version>4.5.2</version>
+        </dependency>
+        <!-- 使用testng框架，使用数据提供者完成接口批量测试 -->
+        <dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <version>6.8.8</version>
+        </dependency>
+        <!-- 使用poi技术，对excel进行读写操作 -->
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi-ooxml</artifactId>
+            <version>3.17</version>
+        </dependency>
+        <!-- 使用fastjson解析满足json格式的字符串 -->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>1.2.47</version>
+        </dependency>
+        <!-- 下载MySQL依赖包，使用jdbc技术操作数据库，做mysql数据库表数据验证 -->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>5.1.38</version>
+        </dependency>
+        <!-- 集成log4j日志框架，做一些日志来记录系统的行为，以便更好的跟踪项目中的一些交互和问题 -->
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>apache-log4j-extras</artifactId>
+            <version>1.2.17</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <version>6.8.8</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <!-- Maven surefire插件用于运行项目测试。它还允许我们配置在构建项目时要执行的XML文件。下面的配置将告诉Maven插件仅执行testng.xml测试套件文件 -->
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.7.1</version>
+                <configuration>
+                    <!--                    &lt;!&ndash; 设置系统变量，在后面定制化测试报表的时候用的上 &ndash;&gt;-->
+                    <!--                    <systemPropertyVariables>-->
+                    <!--                        <org.uncommons.reportng.escape-output>false</org.uncommons.reportng.escape-output>-->
+                    <!--                    </systemPropertyVariables>-->
+                    <!-- 忽略测试套件执行过程中执行失败的测试方法，继续执行剩余的测试类和测试方法 -->
+                    <testFailureIgnore>true</testFailureIgnore>
+                    <!--                    &lt;!&ndash; 指定构建过程中的编码格式 &ndash;&gt;-->
+                    <!--                    <argLine>-Dfile.encoding=UTF-8</argLine>-->
+                    <!-- 指定构建（执行测试套件）时要执行的套件文件的路径 -->
+                    <suiteXmlFiles>
+                        <suiteXmlFile>testng.xml</suiteXmlFile>
+                    </suiteXmlFiles>
+                </configuration>
+
+            </plugin>
+        </plugins>
+    </build>
+
+    <properties>
+        <!-- 解决文件拷贝时的编码 -->
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <!-- 解决编译时中文乱码-->
+        <maven.compiler.encoding>UTF-8</maven.compiler.encoding>
+    </properties>
+
+</project>
+

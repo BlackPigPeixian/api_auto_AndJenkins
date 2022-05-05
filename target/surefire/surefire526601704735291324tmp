@@ -1,0 +1,5 @@
+#surefire
+#Thu May 05 16:10:23 CST 2022
+user.dir=D\:\\ideaProjectPath\\api_auto_AndJenkins
+localRepository=D\:\\apache-maven-3.6.0\\maven-repository
+basedir=D\:\\ideaProjectPath\\api_auto_AndJenkins

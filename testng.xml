@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<!-- 套件 -->
+<suite name="api-auto-AndJenkins">
+    <!-- 测试集/模块 -->
+
+    <test name="save">
+        <classes>
+            <class name="com.lemon.api.auto.cases.LoginCase_v1"></class>
+        </classes>
+    </test>
+
+</suite>
+    
